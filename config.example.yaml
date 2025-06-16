@@ -1,0 +1,34 @@
+# Configuración de GitHub
+github:
+  token: "your-github-token"
+  organization: "your-org-name"  # Opcional
+
+# Configuración de almacenamiento
+storage:
+  # Amazon S3
+  s3:
+    access_key: "your-access-key"
+    secret_key: "your-secret-key"
+    bucket: "your-bucket-name"
+    region: "us-east-1"
+
+  # Google Drive
+  gdrive:
+    credentials_file: "path/to/credentials.json"
+    token_file: "path/to/token.json"
+
+  # FTP
+  ftp:
+    host: "ftp.example.com"
+    username: "your-username"
+    password: "your-password"
+    port: 21
+    path: "/backups"
+
+# Configuración general
+general:
+  backup_path: "./backups"
+  log_level: "INFO"
+  compression: true
+  max_retries: 3
+  timeout: 300  # segundos 

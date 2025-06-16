@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RepoMirror - Gestión de Repositorios</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Vue.js -->
+    <script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
+    
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Estilos personalizados -->
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+        
+        /* Animaciones para notificaciones */
+        .notification-enter-active, .notification-leave-active {
+            transition: all 0.3s ease;
+        }
+        .notification-enter, .notification-leave-to {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        
+        /* Estilos de seguridad */
+        .security-badge {
+            position: relative;
+        }
+        
+        .security-badge::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #10B981;
+        }
+        
+        .security-badge.insecure::after {
+            background-color: #EF4444;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <!-- El contenido se cargará dinámicamente desde app.js -->
+    </div>
+    
+    <!-- Servicios -->
+    <script src="/static/js/services/SecurityService.js"></script>
+    
+    <!-- Componentes -->
+    <script src="/static/js/components/Dashboard.js"></script>
+    <script src="/static/js/components/RepositoryManager.js"></script>
+    <script src="/static/js/components/NotificationSystem.js"></script>
+    
+    <!-- Aplicación principal -->
+    <script src="/static/js/app.js"></script>
+    
+    <!-- Inicialización de servicios -->
+    <script>
+        // Inicializar el servicio de seguridad
+        SecurityService.init();
+        
+        // Configurar el manejo de errores global
+        window.onerror = function(message, source, lineno, colno, error) {
+            if (app.$refs.notifications) {
+                app.$refs.notifications.addNotification(
+                    'error',
+                    'Error',
+                    'Ha ocurrido un error inesperado. Por favor, intente nuevamente.'
+                );
+            }
+            return false;
+        };
+    </script>
+</body>
+</html> 

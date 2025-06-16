@@ -1,0 +1,39 @@
+# Configuración de desarrollo
+app:
+  debug: true
+  log_level: DEBUG
+  secret_key: "dev_secret_key_change_in_production"
+  database_url: "sqlite:///./repomirror.db"
+
+github:
+  token: "your_github_token"
+  organization: "your_org_name"
+
+storage:
+  backup_path: "./backups"
+  max_retries: 3
+  timeout: 300
+
+  # Amazon S3
+  s3:
+    access_key: "your_access_key"
+    secret_key: "your_secret_key"
+    bucket: "your_bucket_name"
+    region: "us-east-1"
+
+  # Google Drive
+  gdrive:
+    credentials_file: "path/to/credentials.json"
+    token_file: "path/to/token.json"
+
+  # FTP
+  ftp:
+    host: "ftp.example.com"
+    username: "your_username"
+    password: "your_password"
+    port: 21
+    path: "/backups"
+
+security:
+  algorithm: "HS256"
+  access_token_expire_minutes: 30 
